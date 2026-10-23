@@ -1,0 +1,218 @@
+.figure {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+/* Keeps map text legible on phones: the map scrolls sideways instead of shrinking. */
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+  background:
+    radial-gradient(circle at 1px 1px, var(--color-border) 1px, transparent 0) 0 0 / 24px 24px,
+    var(--color-surface-alt);
+}
+
+/* Roads */
+.edge {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.open {
+  stroke: var(--color-road);
+  stroke-width: 1.6;
+}
+
+.closed {
+  stroke: var(--color-danger);
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+}
+
+.medical {
+  stroke: var(--color-accent);
+  stroke-width: 3.5;
+}
+
+.supply {
+  stroke: var(--color-info);
+  stroke-width: 3;
+  stroke-dasharray: 1 6;
+}
+
+.used {
+  animation: fade-in 500ms ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.halo {
+  fill: none;
+  stroke: var(--color-warning);
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0.45;
+}
+
+.hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 16;
+  cursor: pointer;
+}
+
+.hit:focus-visible {
+  outline: none;
+  stroke: var(--color-warning);
+  stroke-opacity: 0.45;
+}
+
+.hit:hover {
+  stroke: var(--color-warning);
+  stroke-opacity: 0.25;
+}
+
+.marker_open {
+  fill: var(--color-road);
+}
+
+.marker_closed {
+  fill: var(--color-danger);
+}
+
+.marker_medical {
+  fill: var(--color-accent);
+}
+
+.marker_supply {
+  fill: var(--color-info);
+}
+
+.cost {
+  fill: var(--color-muted);
+  font-size: 10px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--color-surface-alt);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.costClosed {
+  fill: var(--color-danger-text);
+}
+
+/* Nodes */
+.node {
+  fill: var(--color-primary);
+}
+
+.kind_incident_site {
+  fill: #8a3b3b;
+}
+
+.kind_shelter {
+  fill: #2d6a4f;
+}
+
+.kind_supply_depot {
+  fill: #6a4c93;
+}
+
+.kind_junction {
+  fill: var(--color-muted);
+}
+
+.node polygon,
+.node rect,
+.node circle {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.letter {
+  fill: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  stroke: none;
+  pointer-events: none;
+}
+
+.name {
+  fill: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--color-surface-alt);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.statusOk circle {
+  fill: var(--color-accent-text);
+}
+
+.statusWarn circle {
+  fill: var(--color-warning-text);
+}
+
+.statusBad circle {
+  fill: var(--color-danger-text);
+}
+
+.badgeGlyph {
+  fill: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  stroke: none;
+}
+
+/* Legend */
+.legend {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.legendList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+  font-size: var(--text-xs);
+  list-style: none;
+}
+
+.legendList li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatchNode {
+  fill: var(--color-primary);
+}
+
+.legendBadge {
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.legendNote {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}

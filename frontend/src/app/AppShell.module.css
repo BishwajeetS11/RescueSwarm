@@ -1,0 +1,148 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--page-max);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: #fff;
+}
+
+.logo {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+  background: #fff;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.brandText {
+  display: grid;
+  line-height: 1.2;
+}
+
+.brandName {
+  font-size: var(--text-lg);
+  font-weight: 800;
+}
+
+.tagline {
+  color: #c9d6e4;
+  font-size: var(--text-xs);
+}
+
+.nav {
+  display: flex;
+  flex: 1 1 auto;
+  gap: var(--space-1);
+  overflow-x: auto;
+}
+
+.link {
+  padding: var(--space-2) var(--space-3);
+  color: #e6edf5;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.link:focus-visible {
+  outline-color: #fff;
+}
+
+.current {
+  color: #fff;
+  border-bottom-color: #7fd6d6;
+}
+
+.notices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-3);
+}
+
+.notices > :first-child {
+  flex: 1 1 520px;
+}
+
+.notices > :last-child {
+  flex: 0 1 auto;
+  align-self: center;
+}
+
+.main {
+  flex: 1 0 auto;
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.main:focus {
+  outline: none;
+}
+
+.footer {
+  padding-top: var(--space-4);
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding: var(--space-3);
+  }
+
+  .tagline {
+    display: none;
+  }
+
+  .nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+}

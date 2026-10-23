@@ -1,0 +1,59 @@
+.state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--color-muted);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.error {
+  color: var(--color-danger-text);
+  background: var(--color-danger-soft);
+  border: 1px solid var(--color-danger);
+}
+
+.empty p {
+  max-width: 60ch;
+}
+
+.skeleton {
+  display: grid;
+  gap: var(--space-2);
+  width: min(420px, 100%);
+}
+
+.skeleton span {
+  display: block;
+  height: 12px;
+  background: linear-gradient(90deg, var(--color-border) 25%, var(--color-surface-alt) 50%, var(--color-border) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-pill);
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeleton span:nth-child(2) {
+  width: 80%;
+}
+
+.skeleton span:nth-child(3) {
+  width: 55%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,48 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 100%;
+  padding: 4px var(--space-3) 4px 6px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+}
+
+.glyph {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.mark {
+  font-weight: 700;
+}
+
+.ok .glyph {
+  background: var(--color-accent-text);
+}
+
+.loading .glyph {
+  background: var(--color-muted);
+}
+
+.error {
+  color: var(--color-danger-text);
+  background: var(--color-danger-soft);
+  border-color: var(--color-danger);
+  border-radius: var(--radius-md);
+}
+
+.error .glyph {
+  background: var(--color-danger-text);
+}
