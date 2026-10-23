@@ -1,0 +1,71 @@
+{
+  "id": "scenario-shelter-1",
+  "name": "Shelter capacity shortage",
+  "description": "Synthetic shelter demand exceeds remaining capacity. Whole-demand assignment is required (allow_shelter_split=false), so unmatched demand stays unmet.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Base", "kind": "resource_base"},
+    {"id": "n-a", "label": "Site A", "kind": "incident_site"},
+    {"id": "n-b", "label": "Site B", "kind": "incident_site"},
+    {"id": "n-shelter", "label": "Small shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-base-a", "source": "n-base", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-base", "source": "n-a", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-base-b", "source": "n-base", "target": "n-b", "cost": 2, "available": true},
+    {"id": "e-b-base", "source": "n-b", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-a-shelter", "source": "n-a", "target": "n-shelter", "cost": 1, "available": true},
+    {"id": "e-shelter-a", "source": "n-shelter", "target": "n-a", "cost": 1, "available": true},
+    {"id": "e-b-shelter", "source": "n-b", "target": "n-shelter", "cost": 1, "available": true},
+    {"id": "e-shelter-b", "source": "n-shelter", "target": "n-b", "cost": 1, "available": true},
+    {"id": "e-base-depot", "source": "n-base", "target": "n-depot", "cost": 1, "available": true},
+    {"id": "e-depot-base", "source": "n-depot", "target": "n-base", "cost": 1, "available": true},
+    {"id": "e-depot-a", "source": "n-depot", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-depot", "source": "n-a", "target": "n-depot", "cost": 2, "available": true},
+    {"id": "e-depot-b", "source": "n-depot", "target": "n-b", "cost": 2, "available": true},
+    {"id": "e-b-depot", "source": "n-b", "target": "n-depot", "cost": 2, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-a",
+      "label": "Large simulated displacement A",
+      "node_id": "n-a",
+      "category": "storm",
+      "urgency": 4,
+      "people_affected": 25,
+      "time_sensitivity": 0.6,
+      "access_risk": 0.3,
+      "medical_units_required": 1,
+      "kits_required": 4,
+      "shelter_demand": 20,
+      "status": "pending"
+    },
+    {
+      "id": "inc-b",
+      "label": "Large simulated displacement B",
+      "node_id": "n-b",
+      "category": "storm",
+      "urgency": 3,
+      "people_affected": 18,
+      "time_sensitivity": 0.5,
+      "access_risk": 0.3,
+      "medical_units_required": 1,
+      "kits_required": 3,
+      "shelter_demand": 15,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true},
+    {"id": "med-2", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 18, "used_capacity": 2, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 10}
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "scenario-supply-1",
+  "name": "Aid-kit shortage",
+  "description": "Requested synthetic aid kits exceed depot inventory. Partial fulfillment must be recorded as unmet demand rather than treated as complete.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Base", "kind": "resource_base"},
+    {"id": "n-a", "label": "Demand site", "kind": "incident_site"},
+    {"id": "n-shelter", "label": "Shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Low-stock depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-base-a", "source": "n-base", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-base", "source": "n-a", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-a-shelter", "source": "n-a", "target": "n-shelter", "cost": 1, "available": true},
+    {"id": "e-shelter-a", "source": "n-shelter", "target": "n-a", "cost": 1, "available": true},
+    {"id": "e-depot-a", "source": "n-depot", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-depot", "source": "n-a", "target": "n-depot", "cost": 2, "available": true},
+    {"id": "e-base-depot", "source": "n-base", "target": "n-depot", "cost": 1, "available": true},
+    {"id": "e-depot-base", "source": "n-depot", "target": "n-base", "cost": 1, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-1",
+      "label": "High kit-demand incident",
+      "node_id": "n-a",
+      "category": "earthquake",
+      "urgency": 4,
+      "people_affected": 14,
+      "time_sensitivity": 0.5,
+      "access_risk": 0.4,
+      "medical_units_required": 1,
+      "kits_required": 20,
+      "shelter_demand": 8,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 12, "used_capacity": 0, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 5}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "scenario-disconnected-1",
+  "name": "Disconnected incident",
+  "description": "One incident is isolated from resources. The planner must report infeasibility rather than invent a route.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Connected base", "kind": "resource_base"},
+    {"id": "n-reachable", "label": "Reachable site", "kind": "incident_site"},
+    {"id": "n-island", "label": "Isolated site", "kind": "incident_site"},
+    {"id": "n-shelter", "label": "Connected shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Connected depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-base-r", "source": "n-base", "target": "n-reachable", "cost": 3, "available": true},
+    {"id": "e-r-base", "source": "n-reachable", "target": "n-base", "cost": 3, "available": true},
+    {"id": "e-r-shelter", "source": "n-reachable", "target": "n-shelter", "cost": 1, "available": true},
+    {"id": "e-shelter-r", "source": "n-shelter", "target": "n-reachable", "cost": 1, "available": true},
+    {"id": "e-base-depot", "source": "n-base", "target": "n-depot", "cost": 1, "available": true},
+    {"id": "e-depot-base", "source": "n-depot", "target": "n-base", "cost": 1, "available": true},
+    {"id": "e-depot-r", "source": "n-depot", "target": "n-reachable", "cost": 2, "available": true},
+    {"id": "e-r-depot", "source": "n-reachable", "target": "n-depot", "cost": 2, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-reachable",
+      "label": "Connected simulated incident",
+      "node_id": "n-reachable",
+      "category": "flood",
+      "urgency": 3,
+      "people_affected": 7,
+      "time_sensitivity": 0.4,
+      "access_risk": 0.2,
+      "medical_units_required": 1,
+      "kits_required": 3,
+      "shelter_demand": 4,
+      "status": "pending"
+    },
+    {
+      "id": "inc-island",
+      "label": "Isolated simulated incident",
+      "node_id": "n-island",
+      "category": "flood",
+      "urgency": 5,
+      "people_affected": 11,
+      "time_sensitivity": 0.8,
+      "access_risk": 0.9,
+      "medical_units_required": 1,
+      "kits_required": 4,
+      "shelter_demand": 6,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true},
+    {"id": "med-2", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 20, "used_capacity": 0, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 10}
+  ]
+}

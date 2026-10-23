@@ -1,0 +1,68 @@
+{
+  "id": "scenario-balanced-1",
+  "name": "Balanced flood simulation",
+  "description": "Synthetic flood affecting two sites. Medical units, shelter space, and kits roughly match demand. Priority uses 0.40*urgency_norm + 0.25*people_norm + 0.20*time_sensitivity + 0.15*access_risk.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Staging base", "kind": "resource_base"},
+    {"id": "n-junction", "label": "Central junction", "kind": "junction"},
+    {"id": "n-site-a", "label": "River district A", "kind": "incident_site"},
+    {"id": "n-site-b", "label": "River district B", "kind": "incident_site"},
+    {"id": "n-shelter", "label": "Community shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Supply depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-base-j", "source": "n-base", "target": "n-junction", "cost": 2, "available": true},
+    {"id": "e-j-base", "source": "n-junction", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-j-a", "source": "n-junction", "target": "n-site-a", "cost": 3, "available": true},
+    {"id": "e-a-j", "source": "n-site-a", "target": "n-junction", "cost": 3, "available": true},
+    {"id": "e-j-b", "source": "n-junction", "target": "n-site-b", "cost": 4, "available": true},
+    {"id": "e-b-j", "source": "n-site-b", "target": "n-junction", "cost": 4, "available": true},
+    {"id": "e-j-shelter", "source": "n-junction", "target": "n-shelter", "cost": 2, "available": true},
+    {"id": "e-shelter-j", "source": "n-shelter", "target": "n-junction", "cost": 2, "available": true},
+    {"id": "e-j-depot", "source": "n-junction", "target": "n-depot", "cost": 2, "available": true},
+    {"id": "e-depot-j", "source": "n-depot", "target": "n-junction", "cost": 2, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-a",
+      "label": "Simulated inundation A",
+      "node_id": "n-site-a",
+      "category": "flood",
+      "urgency": 4,
+      "people_affected": 12,
+      "time_sensitivity": 0.7,
+      "access_risk": 0.4,
+      "medical_units_required": 1,
+      "kits_required": 6,
+      "shelter_demand": 10,
+      "status": "pending"
+    },
+    {
+      "id": "inc-b",
+      "label": "Simulated inundation B",
+      "node_id": "n-site-b",
+      "category": "flood",
+      "urgency": 3,
+      "people_affected": 8,
+      "time_sensitivity": 0.5,
+      "access_risk": 0.3,
+      "medical_units_required": 1,
+      "kits_required": 4,
+      "shelter_demand": 8,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true},
+    {"id": "med-2", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 30, "used_capacity": 0, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 20}
+  ]
+}

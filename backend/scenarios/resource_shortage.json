@@ -1,0 +1,91 @@
+{
+  "id": "scenario-shortage-1",
+  "name": "Medical unit shortage",
+  "description": "Three synthetic incidents request medical units, but only one unit is available. Used to demonstrate prioritization and unmet demand reporting.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Unit base", "kind": "resource_base"},
+    {"id": "n-a", "label": "Site Alpha", "kind": "incident_site"},
+    {"id": "n-b", "label": "Site Bravo", "kind": "incident_site"},
+    {"id": "n-c", "label": "Site Charlie", "kind": "incident_site"},
+    {"id": "n-shelter", "label": "Overflow shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Kit depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-base-a", "source": "n-base", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-base", "source": "n-a", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-base-b", "source": "n-base", "target": "n-b", "cost": 5, "available": true},
+    {"id": "e-b-base", "source": "n-b", "target": "n-base", "cost": 5, "available": true},
+    {"id": "e-base-c", "source": "n-base", "target": "n-c", "cost": 3, "available": true},
+    {"id": "e-c-base", "source": "n-c", "target": "n-base", "cost": 3, "available": true},
+    {"id": "e-a-shelter", "source": "n-a", "target": "n-shelter", "cost": 2, "available": true},
+    {"id": "e-shelter-a", "source": "n-shelter", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-b-shelter", "source": "n-b", "target": "n-shelter", "cost": 2, "available": true},
+    {"id": "e-shelter-b", "source": "n-shelter", "target": "n-b", "cost": 2, "available": true},
+    {"id": "e-c-shelter", "source": "n-c", "target": "n-shelter", "cost": 2, "available": true},
+    {"id": "e-shelter-c", "source": "n-shelter", "target": "n-c", "cost": 2, "available": true},
+    {"id": "e-base-depot", "source": "n-base", "target": "n-depot", "cost": 1, "available": true},
+    {"id": "e-depot-base", "source": "n-depot", "target": "n-base", "cost": 1, "available": true},
+    {"id": "e-depot-a", "source": "n-depot", "target": "n-a", "cost": 2, "available": true},
+    {"id": "e-a-depot", "source": "n-a", "target": "n-depot", "cost": 2, "available": true},
+    {"id": "e-depot-b", "source": "n-depot", "target": "n-b", "cost": 2, "available": true},
+    {"id": "e-b-depot", "source": "n-b", "target": "n-depot", "cost": 2, "available": true},
+    {"id": "e-depot-c", "source": "n-depot", "target": "n-c", "cost": 2, "available": true},
+    {"id": "e-c-depot", "source": "n-c", "target": "n-depot", "cost": 2, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-low",
+      "label": "Lower-urgency simulated incident",
+      "node_id": "n-c",
+      "category": "infrastructure",
+      "urgency": 2,
+      "people_affected": 6,
+      "time_sensitivity": 0.3,
+      "access_risk": 0.2,
+      "medical_units_required": 1,
+      "kits_required": 2,
+      "shelter_demand": 3,
+      "status": "pending"
+    },
+    {
+      "id": "inc-mid",
+      "label": "Medium-urgency simulated incident",
+      "node_id": "n-b",
+      "category": "fire",
+      "urgency": 3,
+      "people_affected": 10,
+      "time_sensitivity": 0.4,
+      "access_risk": 0.2,
+      "medical_units_required": 1,
+      "kits_required": 3,
+      "shelter_demand": 4,
+      "status": "pending"
+    },
+    {
+      "id": "inc-high",
+      "label": "High-urgency simulated incident",
+      "node_id": "n-a",
+      "category": "fire",
+      "urgency": 5,
+      "people_affected": 20,
+      "time_sensitivity": 0.9,
+      "access_risk": 0.6,
+      "medical_units_required": 1,
+      "kits_required": 4,
+      "shelter_demand": 6,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 20, "used_capacity": 0, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 12}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "scenario-routes-1",
+  "name": "Alternate route network",
+  "description": "One cheap direct route and one longer detour from the resource base to the incident. Closing the cheap edge should force replanning onto the detour.",
+  "schema_version": 1,
+  "graph_directed": true,
+  "allow_shelter_split": false,
+  "nodes": [
+    {"id": "n-base", "label": "Resource base", "kind": "resource_base"},
+    {"id": "n-incident", "label": "Blocked-road incident", "kind": "incident_site"},
+    {"id": "n-detour", "label": "Detour junction", "kind": "junction"},
+    {"id": "n-shelter", "label": "Roadside shelter", "kind": "shelter"},
+    {"id": "n-depot", "label": "Roadside depot", "kind": "supply_depot"}
+  ],
+  "edges": [
+    {"id": "e-cheap", "source": "n-base", "target": "n-incident", "cost": 2, "available": true},
+    {"id": "e-cheap-back", "source": "n-incident", "target": "n-base", "cost": 2, "available": true},
+    {"id": "e-detour-1", "source": "n-base", "target": "n-detour", "cost": 4, "available": true},
+    {"id": "e-detour-1b", "source": "n-detour", "target": "n-base", "cost": 4, "available": true},
+    {"id": "e-detour-2", "source": "n-detour", "target": "n-incident", "cost": 4, "available": true},
+    {"id": "e-detour-2b", "source": "n-incident", "target": "n-detour", "cost": 4, "available": true},
+    {"id": "e-inc-shelter", "source": "n-incident", "target": "n-shelter", "cost": 1, "available": true},
+    {"id": "e-shelter-inc", "source": "n-shelter", "target": "n-incident", "cost": 1, "available": true},
+    {"id": "e-base-depot", "source": "n-base", "target": "n-depot", "cost": 1, "available": true},
+    {"id": "e-depot-base", "source": "n-depot", "target": "n-base", "cost": 1, "available": true},
+    {"id": "e-depot-inc", "source": "n-depot", "target": "n-incident", "cost": 3, "available": true},
+    {"id": "e-inc-depot", "source": "n-incident", "target": "n-depot", "cost": 3, "available": true}
+  ],
+  "incidents": [
+    {
+      "id": "inc-1",
+      "label": "Simulated road blockage",
+      "node_id": "n-incident",
+      "category": "infrastructure",
+      "urgency": 4,
+      "people_affected": 9,
+      "time_sensitivity": 0.6,
+      "access_risk": 0.5,
+      "medical_units_required": 1,
+      "kits_required": 5,
+      "shelter_demand": 6,
+      "status": "pending"
+    }
+  ],
+  "medical_units": [
+    {"id": "med-1", "node_id": "n-base", "available": true}
+  ],
+  "shelters": [
+    {"id": "shelter-1", "node_id": "n-shelter", "capacity": 12, "used_capacity": 0, "enabled": true}
+  ],
+  "supply_stocks": [
+    {"id": "stock-1", "node_id": "n-depot", "kits_available": 8}
+  ]
+}
