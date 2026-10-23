@@ -17,5 +17,5 @@ services:
       - key: DATABASE_URL
         value: sqlite:///./rescueswarm.db
       - key: CORS_ORIGINS
-        sync: false   # set this in Render dashboard to your Vercel URL after deploy
+        value: "https://rescue-swarm.vercel.app,http://localhost:5173,http://127.0.0.1:5173"
     plan: free
