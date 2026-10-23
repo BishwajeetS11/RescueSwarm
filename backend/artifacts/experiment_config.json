@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "algorithm_version": "alloc-v1",
+  "metric_schema_version": "metrics-v1",
+  "llm_mode": "mock",
+  "llm_calls": 0,
+  "seed_used_for_rng": false,
+  "strategies": [
+    "rescueswarm",
+    "baseline"
+  ],
+  "scenario_ids": [
+    "scenario-balanced-1",
+    "scenario-disconnected-1",
+    "scenario-routes-1",
+    "scenario-shelter-1",
+    "scenario-shortage-1",
+    "scenario-supply-1",
+    "scenario-scale-1"
+  ],
+  "partial_assignment_counts_as_coverage": true,
+  "notes": [
+    "Incident coverage counts an incident if it received any medical, shelter, or kit assignment.",
+    "Baseline processes incidents in input order and takes the first feasible unit by id.",
+    "RescueSwarm ranks incidents by the documented priority formula and prefers lower route cost.",
+    "Both strategies replan after a disruption; the comparison is allocation policy, not with/without AI."
+  ]
+}

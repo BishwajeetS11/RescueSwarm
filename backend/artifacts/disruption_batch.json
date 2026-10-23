@@ -1,0 +1,134 @@
+[
+  {
+    "label": "Alternate routes / close e-cheap",
+    "family": "E3 Route disruption",
+    "scenario_id": "scenario-routes-1",
+    "strategy": "baseline",
+    "seed": 42,
+    "disruption": {
+      "type": "close_edge",
+      "edge_id": "e-cheap",
+      "shelter_id": null,
+      "new_capacity": null,
+      "reason": "E3 close used cheapest route"
+    },
+    "assignments_invalidated": 2,
+    "assignments_restored": 2,
+    "recovery_rate": 1.0,
+    "affected_incident_ids": [
+      "inc-1"
+    ],
+    "replan_count": 1,
+    "replan_steps": 2,
+    "replan_elapsed_ms": 0.177,
+    "final_status": "completed",
+    "final_feasibility": "completed",
+    "constraint_violation_count": 0,
+    "medical_incident_ids_before": [
+      "inc-1"
+    ],
+    "medical_incident_ids_after": [
+      "inc-1"
+    ],
+    "mean_assigned_route_cost_after": 3.5
+  },
+  {
+    "label": "Alternate routes / close e-cheap",
+    "family": "E3 Route disruption",
+    "scenario_id": "scenario-routes-1",
+    "strategy": "rescueswarm",
+    "seed": 42,
+    "disruption": {
+      "type": "close_edge",
+      "edge_id": "e-cheap",
+      "shelter_id": null,
+      "new_capacity": null,
+      "reason": "E3 close used cheapest route"
+    },
+    "assignments_invalidated": 2,
+    "assignments_restored": 2,
+    "recovery_rate": 1.0,
+    "affected_incident_ids": [
+      "inc-1"
+    ],
+    "replan_count": 1,
+    "replan_steps": 2,
+    "replan_elapsed_ms": 0.183,
+    "final_status": "completed",
+    "final_feasibility": "completed",
+    "constraint_violation_count": 0,
+    "medical_incident_ids_before": [
+      "inc-1"
+    ],
+    "medical_incident_ids_after": [
+      "inc-1"
+    ],
+    "mean_assigned_route_cost_after": 3.5
+  },
+  {
+    "label": "Balanced flood / reduce shelter to 18",
+    "family": "E1 Balanced resources",
+    "scenario_id": "scenario-balanced-1",
+    "strategy": "baseline",
+    "seed": 42,
+    "disruption": {
+      "type": "reduce_shelter_capacity",
+      "edge_id": null,
+      "shelter_id": "shelter-1",
+      "new_capacity": 18,
+      "reason": "E3 reduce shelter to remaining used capacity"
+    },
+    "assignments_invalidated": 0,
+    "assignments_restored": 0,
+    "recovery_rate": null,
+    "affected_incident_ids": [],
+    "replan_count": 1,
+    "replan_steps": 2,
+    "replan_elapsed_ms": 0.131,
+    "final_status": "completed",
+    "final_feasibility": "completed",
+    "constraint_violation_count": 0,
+    "medical_incident_ids_before": [
+      "inc-a",
+      "inc-b"
+    ],
+    "medical_incident_ids_after": [
+      "inc-a",
+      "inc-b"
+    ],
+    "mean_assigned_route_cost_after": 5.5
+  },
+  {
+    "label": "Balanced flood / reduce shelter to 18",
+    "family": "E1 Balanced resources",
+    "scenario_id": "scenario-balanced-1",
+    "strategy": "rescueswarm",
+    "seed": 42,
+    "disruption": {
+      "type": "reduce_shelter_capacity",
+      "edge_id": null,
+      "shelter_id": "shelter-1",
+      "new_capacity": 18,
+      "reason": "E3 reduce shelter to remaining used capacity"
+    },
+    "assignments_invalidated": 0,
+    "assignments_restored": 0,
+    "recovery_rate": null,
+    "affected_incident_ids": [],
+    "replan_count": 1,
+    "replan_steps": 2,
+    "replan_elapsed_ms": 0.134,
+    "final_status": "completed",
+    "final_feasibility": "completed",
+    "constraint_violation_count": 0,
+    "medical_incident_ids_before": [
+      "inc-a",
+      "inc-b"
+    ],
+    "medical_incident_ids_after": [
+      "inc-a",
+      "inc-b"
+    ],
+    "mean_assigned_route_cost_after": 5.5
+  }
+]
